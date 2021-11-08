@@ -10,7 +10,12 @@ from logging.handlers import TimedRotatingFileHandler
 
 logger = logging.getLogger(__name__)
 formatter = logging.Formatter('%(asctime)s [%(module)s -> %(funcName)s] - %(message)s')
-handler = TimedRotatingFileHandler('logs/log.txt', when='midnight')
+os_type = sys.platform
+if os_type == 'darwin':
+    handler = TimedRotatingFileHandler('logs/log.txt', when='midnight')
+else:
+    handler = TimedRotatingFileHandler('c:\\log.txt', when='midnight')
+
 handler.suffix = '%Y%m%d'
 handler.setFormatter(formatter)
 logger.addHandler(handler)
