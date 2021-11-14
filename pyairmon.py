@@ -35,7 +35,7 @@ class AirconIrController():
         self.reader = None
 
         self.scheducler = BackgroundScheduler(timezone='Asia/Seoul', misfire_grace_time=300, coalesce=True)
-        self.scheducler.add_job(self.send_ir_on, 'cron', day_of_week='mon-fri', hour=7, minute=30)
+        self.scheducler.add_job(self.send_ir_on, 'cron', day_of_week='mon-fri', hour=7, minute=00)
         self.scheducler.add_job(self.send_ir_off, 'cron', day_of_week='mon-fri', hour=17, minute=0)
         self.scheducler.start()
 
